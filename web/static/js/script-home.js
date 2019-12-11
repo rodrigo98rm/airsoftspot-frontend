@@ -1,44 +1,28 @@
 $( document ).ready(function(){
 	$('select').formSelect();
   checkUser();
+  countData();
 });
 
-$('#login').click( function(event) {
-    
-
-    var login_json = {
-        "email": $('#email').val(),
-        "password": $("#password").val()
-    }
-
-    console.log(login_json);
-
-    $.ajax({
-        url: 'http://134.209.114.75/airsoftspot/api/session',
-        type: 'post',
-        contentType: "application/json",
-        data: JSON.stringify(login_json),
-        success: function(data) {
-           name = data['user']['name'];
-           token = data['token'];
-           document.cookie = "name="+name;
-           document.cookie = "token="+token;
-
-           window.location.href = "http://127.0.0.1:5000/";
-         },
-        error: function (e){
-            alert(JSON.stringify(e));
-        }
-    });
-
-});
+function countData(){
+  $.ajax({
+      url: 'http://134.209.114.75/airsoftspot/api/field?name=&city=&state=',
+      type: 'get',
+      success: function(data) {
+        console.log(data);
+        $('#field-count').html(data.length);
+       },
+      error: function (e){
+          alert(JSON.stringify(e));
+      }
+  });
+}
 
 $('#logout').click( function(event) {
   document.cookie = "name=; expires=Thu, 01 Jan 1970 00:00:00 UTC";
   document.cookie = "token=; expires=Thu, 01 Jan 1970 00:00:00 UTC";
   location.reload();
 });
-
 
 function getCookie(cname) {
   var name = cname + "=";

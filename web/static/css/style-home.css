@@ -66,3 +66,18 @@ h1, h2, h3, h4, h5, h6 {
  	font-size: 24px;
  	/*border: 1px solid white;*/
 }
+
+#boas-vindas{
+    display: none;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 18px !important;
+}
+
+#boas-vindas-nome{
+    color: #e4a317;
+}
+
+#logout{
+    height: 30px;
+    line-height: 32px;
+}

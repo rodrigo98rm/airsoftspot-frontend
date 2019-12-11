@@ -16,12 +16,13 @@
 
 <nav class="nav-extended">
     <div class="nav-wrapper">
-      <a href="home.html" class="brand-logo military-font" style="margin-left: 20px;">Airsoft Spot</a>
+      <a href="/" class="brand-logo military-font" style="margin-left: 20px;">Airsoft Spot</a>
       <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
-        <li><a class="military-font header-link" href="sass.html">Login</a></li>
-        <li><a class="military-font header-link" href="badges.html">Cadastro</a></li>
-        <li><a class="military-font header-link" href="badges.html">Cadastro Campo</a></li>
+        <li id="boas-vindas" class="military-font">Olá, <span id="boas-vindas-nome"></span><a class="waves-effect waves-light btn red" id="logout">Sair</a></li>
+        <li><a class="military-font header-link" href="login">Login</a></li>
+        <li><a class="military-font header-link" href="cadastro">Cadastro</a></li>
+        <li><a class="military-font header-link" href="cadastro-campo">Cadastro Campo</a></li>
       </ul>
     </div>
     <div class="nav-content military-font">
@@ -44,8 +45,8 @@
                 <label for="name">Nome do campo</label>
               </div>
               <div class="input-field col s12">
-                <input id="name" type="text" name="adress" class="validate" required>
-                <label for="name">Endereço</label>
+                <input id="address" type="text" name="adress" class="validate" required>
+                <label for="address">Endereço</label>
               </div>
               <div class="input-field col s8">
                 <input id="cidade" type="text" class="validate">
@@ -56,8 +57,8 @@
                 <label for="estado">Estado</label>
               </div>
               <div class="input-field col s12">
-                <input id="name" type="text" name="site" class="validate" required>
-                <label for="name">Site</label>
+                <input id="site" type="text" name="site" class="validate" required>
+                <label for="site">Site</label>
               </div>
               <div class="input-field col s12">
                 <textarea id="textarea1" class="materialize-textarea"></textarea>

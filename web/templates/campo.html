@@ -17,12 +17,13 @@
 
 <nav class="nav-extended">
     <div class="nav-wrapper">
-      <a href="home.html" class="brand-logo military-font" style="margin-left: 20px;">Airsoft Spot</a>
+      <a href="/" class="brand-logo military-font" style="margin-left: 20px;">Airsoft Spot</a>
       <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
-        <li><a class="military-font header-link" href="sass.html">Login</a></li>
-        <li><a class="military-font header-link" href="badges.html">Cadastro</a></li>
-        <li><a class="military-font header-link" href="badges.html">Cadastro Campo</a></li>
+        <li id="boas-vindas" class="military-font">Olá, <span id="boas-vindas-nome"></span><a class="waves-effect waves-light btn red" id="logout">Sair</a></li>
+        <li><a class="military-font header-link" href="login">Login</a></li>
+        <li><a class="military-font header-link" href="cadastro">Cadastro</a></li>
+        <li><a class="military-font header-link" href="cadastro-campo">Cadastro Campo</a></li>
       </ul>
     </div>
     <div class="nav-content military-font">
@@ -57,6 +58,16 @@
           <a id="cancel-filter" class="waves-effect waves-light btn ">Cancelar</a>
           <button id="apply-filter"class="waves-effect waves-light btn">Filtrar</button>
         </div>
+    </div>
+
+    <div class="field-content-div">
+      <div class="field-content-header"><a class="close-btn"><i class="material-icons">close</i></a></div>
+      <h5 class="military-font" id="field-name">Nome do campo</h5>
+      <p id="field-site">www.site_do_campo.com.br</p>
+      <p id="field-adress">Rua Exemplo, N° 123</p>
+      <p id="field-location"><span id="field-city">São Paulo</span> - <span id="field-state">SP</span></p>
+      <p id="field-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut sollicitudin semper lacinia. Mauris ullamcorper vitae orci at rhoncus. Nulla blandit iaculis dapibus. Sed finibus tellus ut bibendum porttitor. Suspendisse potenti. Integer ut augue non eros mollis interdum. In sem elit, pretium commodo congue vel, facilisis ac dui. Sed scelerisque suscipit mi. Vivamus placerat mi et dolor ultricies, eu euismod nisl auctor. Suspendisse lorem ex, rhoncus sed tristique nec, rhoncus sit amet enim. Integer diam sem, aliquet et nulla ut, placerat ornare nisl. Nullam eu vulputate quam.</p>
+      <div id="field-id" class="id-campo">123</div>
     </div>
     
     <div class="title-div">

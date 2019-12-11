@@ -1,5 +1,6 @@
 $( document ).ready(function(){
 	$('select').formSelect();
+    checkUser();
 });
 
 $( "#clear" ).click(function() {
@@ -7,21 +8,72 @@ $( "#clear" ).click(function() {
 });
 
 $('#submit-form').click( function(event) {
-    event.preventDefault();
-    console.log($('form').serialize());
+    event.preventDefault()
+
+    var campo_json = {
+      "name": $('#name').val(),
+      "address": $('#address').val(),
+      "city": $('#cidade').val(),
+      "state": $('#estado').val().toUpperCase(),
+      "about": $('#textarea1').val(),
+      "site": $('#site').val()
+    }
+
+    console.log(campo_json);
+
     $.ajax({
-        url: '/register',
+        url: 'http://134.209.114.75/airsoftspot/api/field',
         type: 'post',
-        dataType: 'json',
-        data: $('form').serialize(),
+        contentType: "application/json",
+        headers: {'authorization': 'Bearer '+getCookie('token')},
+        data: JSON.stringify(campo_json),
         success: function(data) {
-           if(JSON.stringify(data) == "success"){
-            $('#signin-form').trigger("reset");
-           }
+          console.log(data);
+          window.location.href = "http://127.0.0.1:5000/campo";
          },
         error: function (e){
             alert(JSON.stringify(e));
         }
     });
-
 });
+
+$('#logout').click( function(event) {
+  document.cookie = "name=; expires=Thu, 01 Jan 1970 00:00:00 UTC";
+  document.cookie = "token=; expires=Thu, 01 Jan 1970 00:00:00 UTC";
+  window.location.href = "http://127.0.0.1:5000/";
+});
+
+function getCookie(cname) {
+  var name = cname + "=";
+  var ca = document.cookie.split(';');
+  for(var i = 0; i < ca.length; i++) {
+    var c = ca[i];
+    while (c.charAt(0) == ' ') {
+      c = c.substring(1);
+    }
+    if (c.indexOf(name) == 0) {
+      return c.substring(name.length, c.length);
+    }
+  }
+  return "";
+}
+
+function checkUser(){
+    name = getCookie('name');
+
+    if(name != ""){
+      $('#boas-vindas-nome').html(name);
+      $('#boas-vindas').show();
+      $('#boas-vindas').parent().children().eq(0).show();
+      $('#boas-vindas').parent().children().eq(1).hide();
+      $('#boas-vindas').parent().children().eq(2).hide();
+      $('#boas-vindas').parent().children().eq(3).show();
+    }
+
+    else{
+      $('#boas-vindas').parent().children().eq(0).hide();
+      $('#boas-vindas').parent().children().eq(1).show();
+      $('#boas-vindas').parent().children().eq(2).show();
+      $('#boas-vindas').parent().children().eq(3).hide();
+    }
+}

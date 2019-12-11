@@ -55,3 +55,18 @@ input{
 textarea{
 	color: #fff;
 }
+
+#boas-vindas{
+    display: none;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 18px !important;
+}
+
+#boas-vindas-nome{
+    color: #e4a317;
+}
+
+#logout{
+    height: 30px;
+    line-height: 32px;
+}
