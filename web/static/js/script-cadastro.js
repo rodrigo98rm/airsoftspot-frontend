@@ -33,7 +33,7 @@ $('#submit-form').click(function(event) {
       success(data) {
         console.log(data);
         if (data[0].email == $('#email').val()) {
-          window.location.href = '/login';
+          window.location.href = '/login.html';
         }
       },
       error(e) {
