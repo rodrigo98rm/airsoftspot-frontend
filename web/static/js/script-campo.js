@@ -1,6 +1,7 @@
 $( document ).ready(function(){
 	$('select').formSelect();
 	checkUser();
+  getFields();
 });
 
 $(document).on('click','#filter', function(){
@@ -11,13 +12,48 @@ $(document).on('click','#cancel-filter', function(){
     $('.filter-window').hide();
 });
 
-$(document).on('click','.nome-campo', function(){
-    $('.field-content-div').show();
-});
-
 $(document).on('click','.close-btn', function(){
     $('.field-content-div').hide();
 });
+
+$(document).on('click','.nome-campo', function(){
+    var id = $(this).parent().children().last().text();
+    console.log(id);
+    $.ajax({
+          url: 'http://134.209.114.75/airsoftspot/api/field/'+id,
+          type: 'get',
+          success: function(data) {
+            console.log(data);
+            $('#field-name').text(data["name"]);
+            $('#field-site').text(data["site"]);
+            $('#field-address').text(data["address"]);
+            $('#field-city').text(data["city"]);
+            $('#field-state').text(data["state"]);
+            $('#field-description').text(data["about"]);
+            $('#field-id').text(data["fieldid"]);
+            $('.field-content-div').show();
+           },
+          error: function (e){
+              console.log(JSON.stringify(e));
+          }
+      });
+});
+
+function getFields(){
+  $.ajax({
+          url: 'http://134.209.114.75/airsoftspot/api/field?name=&city=&state=',
+          type: 'get',
+          success: function(data) {
+            console.log(data);
+            for(i = 0; i < data.length; i++){
+              $('.field-table').append('<tr><td><a class="nome-campo military-font">'+data[i]["name"]+'</a><p class="localizacao-campo"><span class="cidade">'+data[i]["city"]+'</span> - <span class="estado">'+data[i]["state"]+'</span></p><p class="site-campo">'+data[i]["site"]+'</p><div class="id-campo">'+data[i]["fieldid"]+'</div></td></tr>');
+            }
+           },
+          error: function (e){
+              console.log(JSON.stringify(e));
+          }
+      });
+}
 
 $('#logout').click( function(event) {
   document.cookie = "name=; expires=Thu, 01 Jan 1970 00:00:00 UTC";

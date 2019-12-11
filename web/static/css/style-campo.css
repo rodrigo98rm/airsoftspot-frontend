@@ -158,6 +158,7 @@ textarea{
 	z-index: 100;
 	text-align: center;
 	color: #fff;
+	display: none;
 }
 
 .field-content-header{
