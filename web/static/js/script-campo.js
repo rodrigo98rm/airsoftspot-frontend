@@ -47,7 +47,7 @@ $(document).on('click','.nome-campo', function(){
             $('#field-address').text(data["address"]);
             $('#field-city').text(data["city"]);
             $('#field-state').text(data["state"]);
-            $('#field-description').text(data["about"]);
+            $('#field-description').html(data["about"]);
             $('#field-id').text(data["fieldid"]);
             $('.field-content-div').show();
            },
