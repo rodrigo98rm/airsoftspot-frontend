@@ -12,6 +12,24 @@ $(document).on('click','#cancel-filter', function(){
     $('.filter-window').hide();
 });
 
+$(document).on('click','#apply-filter', function(){
+    $('.field-table tr').remove();
+    $.ajax({
+          url: 'http://134.209.114.75/airsoftspot/api/field?name='+$('#nome').val()+'&city='+$('#cidade').val()+'&state='+$('#estado').val(),
+          type: 'get',
+          success: function(data) {
+            console.log(data);
+            for(i = 0; i < data.length; i++){
+              $('.field-table').append('<tr><td><a class="nome-campo military-font">'+data[i]["name"]+'</a><p class="localizacao-campo"><span class="cidade">'+data[i]["city"]+'</span> - <span class="estado">'+data[i]["state"]+'</span></p><p class="site-campo">'+data[i]["site"]+'</p><div class="id-campo">'+data[i]["fieldid"]+'</div></td></tr>');
+            }
+           },
+          error: function (e){
+              console.log(JSON.stringify(e));
+          }
+      });
+    $('.filter-window').hide();
+});
+
 $(document).on('click','.close-btn', function(){
     $('.field-content-div').hide();
 });
