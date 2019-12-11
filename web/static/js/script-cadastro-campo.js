@@ -31,7 +31,7 @@ $('#submit-form').click(function(event) {
     data: JSON.stringify(campo_json),
     success(data) {
       console.log(data);
-      window.location.href = '/campo';
+      window.location.href = '/campo.html';
     },
     error(e) {
       alert(JSON.stringify(e));
